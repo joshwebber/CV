@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Webber | CV</title>
+    <link href="styles.css" rel="stylesheet">
+<body>
+    <div class="container">
+        <h1>Josh Webber</h1>
+        <h2>Computer Science Graduate | Developer</h2>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('about')">About Me</button>
+            <div class="dropdown-content" id="about">
+                <p>Passionate and motivated Computer Science student with a strong foundation in programming, 
+                  web development, and game design. I am hardworking, eager to learn, 
+                  and always seeking opportunities to improve my skills and contribute effectively to a team.</p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('education')">Education</button>
+            <div class="dropdown-content" id="education">
+                <p>BSc Computer Science – UNISA (2024)</p>
+                <p>GA Level 3 TEFL Certification</p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('skills')">Technical Skills</button>
+            <div class="dropdown-content" id="skills">
+                <p>JavaScript, C++, Python, HTML, CSS</p>
+                <p>Web Development, Game Development</p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('experience')">Work Experience</button>
+            <div class="dropdown-content" id="experience">
+                <p><strong>Online English Teacher | WeTalkLine (Jan 2022 – Present)</strong></p>
+                <p>• Conducts interactive online classes for Chinese students, improving communication skills.</p>
+                <p>• Develops custom lesson plans and maintains a structured learning environment.</p>
+                <p>• Enhances digital collaboration skills through remote teaching.</p>
+                
+                <p><strong>Teacher Assistant | Synthesis (Jan 2022 – Dec 2022)</strong></p>
+                <p>• Provided technical support for students during online classes.</p>
+                <p>• Assisted in setting up educational games and activities.</p>
+                <p>• Developed problem-solving and troubleshooting skills in a digital environment.</p>
+                
+                <p><strong>Freelance Online English Tutor (Jan 2020 – Present)</strong></p>
+                <p>• Managed self-promotion and digital marketing to attract students.</p>
+                <p>• Gained experience in client communication and adaptability to different learning styles.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

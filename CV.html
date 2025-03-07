@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Webber | CV</title>
+    <link href="styles.css" rel="stylesheet">
+<body>
+    <div class="container">
+        <h1>Josh Webber</h1>
+        <h2>Computer Science Graduate | Developer</h2>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('about')">About Me</button>
+            <div class="dropdown-content" id="about">
+                <p>I am a passionate and motivated Computer Science graduate with a strong foundation in programming, web development, and game design. Having completed my BSc in Computer Science at UNISA in December 2024, I am eager to apply my skills in a dynamic, remote IT environment.</p>
+
+                   <p>Proficient in JavaScript, HTML, and CSS, I have hands-on experience in frontend development and game design with Unreal Engine. My background in online education has also honed my ability to communicate complex ideas effectively and adapt to remote working environments.</p>
+                    
+                    Beyond coding, I bring experience in digital collaboration, problem-solving, and project management, developed through my work as an online English teacher, teacher assistant, and freelance tutor. My previous roles in estate management and as a professional musician have further strengthened my leadership, creativity, and adaptability.
+                    
+                    Currently, I am seeking a remote IT internship or junior developer role where I can contribute my skills while continuously learning and growing in the field.
+                    
+                    </p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('education')">Education</button>
+            <div class="dropdown-content" id="education">
+                <p>BSc Computer Science – University of South Africa (2024)</p>
+                <p>GA Level 3 TEFL Certification</p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('skills')">Technical Skills</button>
+            <div class="dropdown-content" id="skills">
+                <p>JavaScript, C++, Python, HTML, CSS</p>
+                <p>Web Development, Game Development</p>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('experience')">Work Experience</button>
+            <div class="dropdown-content" id="experience">
+               
+                <h3><strong>Online English Teacher | WeTalkLine (Jan 2022 – Present)</strong></h3>
+                <p>     • Conducts interactive online classes for Chinese students, improving communication skills.</p>
+                <p>     • Develops custom lesson plans and maintains a structured learning environment.</p>
+                <p class="space">     • Enhances digital collaboration skills through remote teaching.</p>
+                
+                <h3><strong>Teacher Assistant | Synthesis (Jan 2022 – Dec 2022)</strong></h3>
+                <p>     • Provided technical support for students during online classes.</p>
+                <p>     • Assisted in setting up educational games and activities.</p>
+                <p class="space">     • Developed problem-solving and troubleshooting skills in a digital environment.</p>
+                
+                <h3><strong>Freelance Online English Tutor (Jan 2020 – Present)</strong></h3>
+                <p>     • Managed self-promotion and digital marketing to attract students.</p>
+                <p class="space">     • Gained experience in client communication and adaptability to different learning styles.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+    </script>  
+    <h4 class="h4">I have designed a basic game called "DogRun" to show case my game design skill. Please give it a try and see if you can beat my high score.</h4>
+
+    <h2>High Scores</h2>
+    <table id="highScoresTable">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="highScoresBody">
+            <!-- Scores will be dynamically added here -->
+        </tbody>
+    </table>
+    <div class="button-container">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <canvas id="gameCanvas" width="1000" height="500"></canvas>
+<h4 class="h4"> I am passionate about cryptocurrency and blockchain technology.</h4> 
+   <h4 class="h4">I would love the opportunity to gain hands-on experience in this field. Check out my Crypto Price Checker below!.</h4>
+    <h2>Crypto Price Tracker</h2>
+    <div id="crypto-prices">
+        <table>
+            <thead>
+                <tr>
+                    <th>Coin</th>
+                    <th>Price (USD)</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-table"></tbody>
+        </table>
+    </div>
+    <h5 class="h5"> Website designed by Josh Webber
+        Email: joshwebber08@gmail.com
+    </h5>
+
+
+    <script>
+     const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let gameRunning = false;
+let player, obstacles, gravity, score;
+let backgroundX = 0;
+let groundY = 350;
+
+const playerImg = new Image();
+playerImg.src = "dog.png";
+
+const bgImage = new Image();
+bgImage.src = "city.png";
+
+const obstacleImage = new Image();
+obstacleImage.src = "hunter.png";
+
+function initGame() {
+    player = { x: 420, y: 410, width: 100, height: 80, dy: 0, jumping: false };
+    obstacles = [];
+    gravity = 0.3;
+    score = 0;
+}
+
+function startGame() {
+    if (!gameRunning) {
+        initGame();
+        gameRunning = true;
+        gameLoop();
+    }
+}
+
+let jumpCount = 0;
+function jump() {
+    if (jumpCount < 2) {
+        player.dy = -11;
+        player.jumping = true;
+        jumpCount++;
+    }
+}
+
+function gameLoop() {
+    if (!gameRunning) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    backgroundX -= 2;
+    if (backgroundX <= -canvas.width) {
+        backgroundX = 0;
+    }
+    ctx.drawImage(bgImage, backgroundX, 0, canvas.width, canvas.height);
+    ctx.drawImage(bgImage, backgroundX + canvas.width, 0, canvas.width, canvas.height);
+
+    player.dy += gravity;
+    player.y += player.dy;
+
+    if (player.y > 410) {
+        player.y = 410;
+        player.dy = 0;
+        player.jumping = false;
+        jumpCount = 0;
+    }
+    ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+
+    if (Math.random() < 0.005) {
+        obstacles.push({ x: canvas.width, y: 400, width: 80, height: 100 });
+    }
+
+    obstacles.forEach((obs, i) => {
+        obs.x -= 3;
+        ctx.drawImage(obstacleImage, obs.x, obs.y, obs.width, obs.height);
+        if (obs.x + obs.width < 0) {
+            obstacles.splice(i, 1);
+            score++;
+        }
+        let buffer = 20;
+        if (player.x + buffer < obs.x + obs.width - buffer &&
+            player.x + player.width - buffer > obs.x + buffer &&
+            player.y + buffer < obs.y + obs.height - buffer &&
+            player.y + player.height - buffer > obs.y + buffer) {
+            gameRunning = false;
+            checkAndSaveScore(score);
+            alert("Game Over! Score: " + score);
+        }
+    });
+
+    ctx.fillStyle = "white";
+    ctx.font = "30px Arial";
+    ctx.fillText("Score: " + score, 10, 40);
+
+    requestAnimationFrame(gameLoop);
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.code === "Space") {
+        jump();
+    }
+});
+
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+function checkAndSaveScore(playerScore) {
+    if (highScores.length < 5 || playerScore > highScores[4].score) {
+        let playerName = prompt("Congratulations! You have a high score. Please enter your name:");
+        highScores.push({ name: playerName, score: playerScore });
+        highScores.sort((a, b) => b.score - a.score);
+        highScores = highScores.slice(0, 5);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        updateHighScoreTable();
+    }
+}
+function updateHighScoreTable() {
+    let tableBody = document.getElementById("highScoresBody");
+    tableBody.innerHTML = "";
+    highScores.forEach(score => {
+        let row = tableBody.insertRow();
+        let nameCell = row.insertCell(0);
+        let scoreCell = row.insertCell(1);
+        nameCell.textContent = score.name;
+        scoreCell.textContent = score.score;
+    });
+}
+window.onload = updateHighScoreTable;
+initGame();
+
+// --- CRYPTO PRICE TRACKER ---
+
+async function fetchCryptoPrices() {
+            try {
+                const response = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&sparkline=false");
+                const data = await response.json();
+                
+                let tableHTML = "";
+                data.forEach(coin => {
+                    const priceChange = coin.price_change_percentage_24h;
+                    const priceClass = priceChange >= 0 ? "price-up" : "price-down";
+                    const priceSymbol = priceChange >= 0 ? "▲" : "▼";
+
+                    tableHTML += `
+                        <tr>
+                            <td>
+                                <img src="${coin.image}" alt="${coin.name}" class="crypto-icon">
+                                ${coin.name} (${coin.symbol.toUpperCase()})
+                            </td>
+                            <td>$${coin.current_price.toFixed(2)}</td>
+                            <td class="${priceClass}">${priceSymbol} ${priceChange.toFixed(2)}%</td>
+                        </tr>
+                    `;
+                });
+
+                document.getElementById("crypto-table").innerHTML = tableHTML;
+            } catch (error) {
+                console.error("Error fetching crypto data:", error);
+            }
+        }
+
+        // Fetch prices every 10 seconds
+        fetchCryptoPrices();
+        setInterval(fetchCryptoPrices, 10000);
+    </script>
+
+</body>
+</html>

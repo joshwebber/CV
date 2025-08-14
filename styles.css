@@ -24,9 +24,9 @@ h3 {
     padding-bottom: 20px;
 }
 
-h4 {
+h4, h5 {
     color: #ffffff;
-    text-align: justify;
+    text-align: center; /* center all h4 and h5 headings */
     font-family: 'Fira Code', monospace;
 }
 
@@ -34,11 +34,6 @@ p {
     text-align: justify;
 }
 
-.h5 {
-    color: #ffffff;
-    text-align: center;
-    font-family: 'Fira Code', monospace;
-}
 .dropdown {
     margin-bottom: 10px;
 }
@@ -129,6 +124,7 @@ th {
     font-size: 18px;  
 
 }
+
 
 
 

@@ -10,7 +10,7 @@ body {
     margin: auto;
     padding: 20px;
 }
-h1, h2, h4 {
+h1, h2 {
     text-align: center;
 }
 h3 {
@@ -129,3 +129,4 @@ th {
     font-size: 18px;  
 
 }
+

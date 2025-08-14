@@ -24,15 +24,11 @@ h3 {
     padding-bottom: 20px;
 }
 
-.h4 {
-    color: #ffffff;
-    text-align: center; 
-    font-family: 'Fira Code', monospace;
-}
-.h5 {
-    color: #ffffff;
-    text-align: center; 
-    font-family: 'Fira Code', monospace;
+h4, h5 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0; /* optional spacing */
 }
 p {
     text-align: justify;
@@ -128,6 +124,7 @@ th {
     font-size: 18px;  
 
 }
+
 
 
 

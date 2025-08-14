@@ -10,7 +10,7 @@ body {
     margin: auto;
     padding: 20px;
 }
-h1, h2 {
+h1, h2, h4 {
     text-align: center;
 }
 h3 {
@@ -127,4 +127,5 @@ th {
 
 .score {
     font-size: 18px;  
+
 }
